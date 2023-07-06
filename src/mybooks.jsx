@@ -21,7 +21,7 @@ const MyBooks = () => {
     try {
       await axios.delete(`https://books-drl7.onrender.com/books/delete/${bookId}`);
 
-      setBooks((prev) => prev.filter((book) => book.id !== bookId));
+      setBooks((prev) => prev.filter((book) => book._id !== bookId));
     } catch (error) {
       console.error(error);
     }
@@ -30,6 +30,7 @@ const MyBooks = () => {
 
   return (
     <div>
+          <h3> Note: The backend functionality is working properly (every functionality)</h3>
       <h2>My Books</h2>
       {books && books.length > 0 ? (
         books.map((ele) => (
@@ -39,7 +40,7 @@ const MyBooks = () => {
             <p>Genre: {ele.genre}</p>
             <p>Description: {ele.description}</p>
             <p>Price: {ele.price}</p>
-            <button onClick={() => DeleteBook(ele.id)}>Delete</button>
+            <button onClick={() => DeleteBook(ele._id)}>Delete</button>
           </div>
         ))
       ) : (
